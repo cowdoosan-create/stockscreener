@@ -2,8 +2,18 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
+  <script>
+  if (!sessionStorage.getItem("auth")) {
+    const input = prompt("비밀번호를 입력하세요");
+    if (input !== "fire") {
+      document.body.innerHTML = "<h2>접근 불가</h2>";
+      throw new Error("Unauthorized");
+    }
+    sessionStorage.setItem("auth", "true");
+  }
+</script>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>퀀트 스크리너 (Single-file)</title>
+  <title>YJ 스크리너 (Single-file)</title>
 
   <!-- 앱처럼 보이게(홈화면 추가용) -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -766,5 +776,6 @@ fetchData();
 </script>
 </body>
 </html>
+
 
 

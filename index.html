@@ -354,6 +354,17 @@
       <ul id="detailSignals"></ul>
       <div class="foot" id="detailFoot">-</div>
     </div>
+    <!-- 실시간 차트 -->
+<div class="analysis" style="margin-top:12px;">
+  <h3>📈 실시간 차트</h3>
+
+  <iframe
+    id="tvFrame"
+    style="width:100%; height:220px; border:0; border-radius:10px;"
+    loading="lazy"
+    allowfullscreen
+  ></iframe>
+</div>
   </aside>
 </div>
 
@@ -659,6 +670,17 @@ function openDetail(stock){
 
   rightPane.classList.add("open");
   // 모바일에서 뒤 스크롤 방지 느낌
+    // TradingView 차트 업데이트
+  const frame = document.getElementById("tvFrame");
+  if(frame){
+    frame.src =
+      "https://www.tradingview.com/widgetembed/?" +
+      "symbol=KRX:" + stock.Code +
+      "&interval=D" +
+      "&theme=dark" +
+      "&hidesidetoolbar=1" +
+      "&hidetoptoolbar=1";
+  }
 }
 
 function closeDetail(){
@@ -776,6 +798,7 @@ fetchData();
 </script>
 </body>
 </html>
+
 
 
 

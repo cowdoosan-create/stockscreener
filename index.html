@@ -672,15 +672,13 @@ function openDetail(stock){
   // 모바일에서 뒤 스크롤 방지 느낌
     // TradingView 차트 업데이트
   const frame = document.getElementById("tvFrame");
-  if(frame){
-    frame.src =
-      "https://www.tradingview.com/widgetembed/?" +
-      "symbol=KRX:" + stock.Code +
-      "&interval=D" +
-      "&theme=dark" +
-      "&hidesidetoolbar=1" +
-      "&hidetoptoolbar=1";
-  }
+if(frame){
+  const ex = (stock.Market === "KOSDAQ") ? "KOSDAQ" : "KOSPI";
+  frame.src =
+    "https://www.tradingview.com/widgetembed/?" +
+    "symbol=" + ex + ":" + stock.Code +
+    "&interval=D&theme=dark&hidesidetoolbar=1&hidetoptoolbar=1";
+}
 }
 
 function closeDetail(){
@@ -798,6 +796,7 @@ fetchData();
 </script>
 </body>
 </html>
+
 
 
 
